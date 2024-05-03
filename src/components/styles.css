@@ -1,4 +1,6 @@
 /* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Ubuntu:wght@700&display=swap');
+
 .form-container {
     max-width: 400px;
     margin: 0 auto;
@@ -6,6 +8,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
+    font-family: 'Montserrat', sans-serif;
   }
   
   .form-container h2 {

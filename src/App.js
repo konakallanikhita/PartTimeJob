@@ -36,7 +36,7 @@ const Navigation = () => {
   return (
     <Router>
       <nav>
-        <h1 className='head'>Part-time Job Scheduling</h1>
+        <h1 className='head'>Part-time Job Portal</h1>
         <ul>
           
           {localStorage.getItem('token') ? (

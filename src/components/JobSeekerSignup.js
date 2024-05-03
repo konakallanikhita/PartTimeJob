@@ -23,7 +23,7 @@ function JobSeekerSignup() {
 
   const containerStyle = {
     maxWidth: '400px',
-    margin: '0 auto',
+    margin: '150px 30px 20px 530px',
     padding: '20px',
     border: '1px solid #ccc',
     borderRadius: '5px',
@@ -52,7 +52,7 @@ function JobSeekerSignup() {
 
   return (
     <div style={containerStyle}>
-      <h2>Job Seeker Signup</h2>
+      <h2>SignUp</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} required />

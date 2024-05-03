@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       {/* <Slideshow /> */}
-      <h1 className='sec'>Sectors</h1>
+      {/* <h1 className='sec'>Sectors</h1> */}
       <div className='main'>
         <Jobs
           title="Coffee Shop"

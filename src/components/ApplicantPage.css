@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Ubuntu:wght@700&display=swap');
+
 .applicant-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    font-family: 'Montserrat', sans-serif;
     
   }
   
@@ -24,7 +27,7 @@
     border-radius: 5px;
     margin-bottom: 20px;
     padding: 20px;
-    height: 150px;
+    height: 120px;
     
     /* width: 500px; */
   }

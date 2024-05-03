@@ -23,11 +23,12 @@ function JobSeekerLogin() {
 
   const containerStyle = {
     maxWidth: '400px',
-    margin: '0 auto',
+    margin: '150px 30px 20px 530px',
     padding: '20px',
     border: '1px solid #ccc',
     borderRadius: '5px',
     textAlign: 'center',
+    // marginTop:"0px",
   };
 
   const inputStyle = {
@@ -52,7 +53,7 @@ function JobSeekerLogin() {
 
   return (
     <div style={containerStyle}>
-      <h2>Job Seeker Login</h2>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email:</label>
         <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle} required />

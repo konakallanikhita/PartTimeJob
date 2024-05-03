@@ -1,10 +1,12 @@
 /* Jobs.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Ubuntu:wght@700&display=swap');
 
 /* Style for the job card container */
 .main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .job-card {
