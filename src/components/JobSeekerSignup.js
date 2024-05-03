@@ -2,21 +2,19 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-
 function JobSeekerSignup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/seekersignup', { name, email, password });
+      const response = await axios.post('http://localhost:8000/api/seekersignup', { name, email, password });
       console.log(response.data.message); // Handle success message
-      history.push('/JobSeekerLogin'); // Redirect to login page after successful signup
+      history.push('/'); // Redirect to login page after successful signup
     } catch (error) {
       setError('Failed to signup. Please try again.');
       console.error('Signup error:', error);

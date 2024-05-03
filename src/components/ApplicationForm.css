@@ -7,6 +7,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
   }
   
   .application-form h2 {
@@ -18,9 +19,17 @@
     display: block;
     margin-bottom: 5px;
   }
-  
+  .application-form select{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
   .application-form input[type="text"],
   .application-form input[type="email"],
+  .application-form input[type="number"],
+  .application-form input[type="date"],
   .application-form textarea {
     width: 100%;
     padding: 8px;

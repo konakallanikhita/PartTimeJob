@@ -1,63 +1,85 @@
 import React from 'react';
-import { BrowserRouter as Router,Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
-import About from'./components/About';
+import About from './components/About';
 import Home from './components/Home';
-// import Login from './components/Login';
-// import SignUp from './components/SignUp';
-import Application from './components/Application';
-
+import Home1 from './components/Home1';
+import AddJobPage from './components/AddJobPage';
 import JobList from './components/JobList';
-import JobDetails from './components/JobDetails';
-import JobProviderLogin from './components/JobProviderLogin';
-import JobSeekerLogin from './components/JobSeekerLogin';
+import JobDetailPage from './components/JobDetailPage';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import JobProviderLogin from './components/JobProviderLogin';
+import JobSeekerLogin from './components/JobSeekerLogin';
 import JobProviderSignup from './components/JobProviderSignup'; 
 import JobSeekerSignup from './components/JobSeekerSignup';
-// const Home = () => {
-//   return <h2>Home</h2>;
-// };
-
-// const Login = () => {
-//    <Login/>; 
-// };
-
-// const SignUp = () => {
-//   return <h2>Sign Up</h2>;
-// };
-
-// const About = () => {
-//    <About/>;
-// };
+import SubmittedJobs from './components/SubmittedJobs';
+import ApplicationForm from './components/ApplicationForm';
+import ApplicantPage from './components/ApplicantPage';
+// import BlurHomePage from './components/BlurHomePage';
 
 const Navigation = () => {
+  // const history = useHistory();
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    
+    window.location.reload();
+    window.location.href = '/';
+    
+  };
+
+  const handleReload = () => {
+    window.location.reload();
+   
+  };
+
   return (
     <Router>
       <nav>
-        
         <h1 className='head'>Part-time Job Scheduling</h1>
         <ul>
-          <li><Link to="/" className="aa">Home</Link></li>
-          <li><Link to="/login"className="aa">Login</Link></li>
-          <li><Link to="/signup"className="aa">Sign Up</Link></li>
-          <li><Link to="/about"className="aa">About</Link></li>
+          
+          {localStorage.getItem('token') ? (
+  <>
+  <li><Link to="/" className="aa">Home</Link></li>
+    <li><Link to="/home" className="aa">Sectors</Link></li>
+    <li><Link to="/applicant" className="aa">Applicants</Link></li>
+    <li><Link to="/logout" className="aa" onClick={handleLogout}>Logout</Link></li>
+  </>
+) : (
+  <>
+  <li><Link to="/" className="aa">Home</Link></li>
+  <li><Link to="/" className="aa"onClick={handleReload}>Go to website</Link></li>
+    <li><Link to="/jobseekerlogin" className="aa">Login</Link></li>
+    <li><Link to="/jobseekersignup" className="aa">Sign Up</Link></li>
+  </>
+)}
+
+
+
+          <li><Link to="/about" className="aa">About</Link></li>
+
         </ul>
       </nav>
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/application-form" component={Application}/>
-        {/* <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} /> */}
+        <Route path="/home" exact component={Home} />
+        <Route path="/" exact component={Home1} />
         <Route path="/about" component={About} />
-        <Route exact path="/" component={JobList} />
-          <Route path="/jobs/:id" component={JobDetails} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} /> 
-          <Route path="/JobProviderLogin" component={JobProviderLogin} />
-          <Route path="/JobSeekerLogin" component={JobSeekerLogin} /> 
-          <Route path="/JobProviderSignup" component={JobProviderSignup} />
-          <Route path="/JobSeekerSignup" component={JobSeekerSignup} /> 
+        <Route path="/jobs-list" component={JobList} />
+        <Route path="/job/:id" component={JobDetailPage} />
+        <Route path="/applicant" component={ApplicantPage}/>
+        <Route path="/job-detail" component={JobDetailPage}/>
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} /> 
+        <Route path="/add-job" component={AddJobPage} />
+        <Route path="/application" exact component={ApplicationForm} />
+        <Route path="/submitted-jobs" component={SubmittedJobs} />
+        <Route path="/JobProviderLogin" component={JobProviderLogin} />
+        <Route path="/JobSeekerLogin" component={JobSeekerLogin} /> 
+        <Route path="/JobProviderSignup" component={JobProviderSignup} />
+        <Route path="/JobSeekerSignup" component={JobSeekerSignup} /> 
+        <Route path="/logout" component={Home1} />
+
       </Switch>
     </Router>
   );

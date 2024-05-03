@@ -1,12 +1,12 @@
 import React from 'react';
-import Slideshow from './Slideshow'; // Correcting the import path
+// import Slideshow from './Slideshow'; // Correcting the import path
 import Jobs from './Jobs'; // Assuming you have a Job component defined
 import './Home2.css';
 
 const Home = () => {
   return (
     <div>
-      <Slideshow />
+      {/* <Slideshow /> */}
       <h1 className='sec'>Sectors</h1>
       <div className='main'>
         <Jobs

@@ -1,4 +1,3 @@
-// JobSeekerLogin.js
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -12,12 +11,10 @@ function JobSeekerLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/seekerlogin', { email, password });
+      const response = await axios.post('http://localhost:8000/api/seekerlogin', { email, password });
       console.log(response.data.message); // Handle success message
-      // Store token in localStorage
-      localStorage.setItem('token', response.data.token);
-      // Redirect to dashboard or home page
-      history.push('/dashboard');
+      localStorage.setItem('token', response.data.token); // Store token in localStorage
+      history.push('/'); // Redirect to home page
     } catch (error) {
       setError('Invalid email or password');
       console.error('Login error:', error);
