@@ -9,7 +9,7 @@ const PORT = 8000;
 
 app.use(express.json());
 
-// Connect to MongoDB
+
 const mongoURI = 'mongodb+srv://21pa1a1245:21pa1a1245@cluster0.zfcra6l.mongodb.net/project?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
@@ -25,7 +25,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Signup endpoint
+
 app.post('/api/seekersignup', async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -43,7 +43,6 @@ app.post('/api/seekersignup', async (req, res) => {
   }
 });
 
-// Login endpoint
 app.post('/api/seekerlogin', async (req, res) => {
   const { email, password } = req.body;
   try {

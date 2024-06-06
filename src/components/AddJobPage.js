@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './ApplicationForm.css'
+import './ApplicationForm.css';
+
 function AddJobPage() {
   const [inputValues, setInputValues] = useState({
     name: '',
@@ -7,7 +8,8 @@ function AddJobPage() {
     place: '',
     salary: '',
     endDate: '',
-    vacancy: ''
+    vacancy: '',
+    industry: ''
   });
 
   const handleSubmit = async (event) => {
@@ -28,7 +30,8 @@ function AddJobPage() {
           place: '',
           salary: '',
           endDate: '',
-          vacancy: ''
+          vacancy: '',
+          industry: ''
         });
         window.location.href = "/job-detail";
       } else {
@@ -53,27 +56,43 @@ function AddJobPage() {
       <form onSubmit={handleSubmit}>
         <label>
           Name:
-          <input type="text" name="name" value={inputValues.name} onChange={handleChange} />
+          <input type="text" name="name" value={inputValues.name} onChange={handleChange} required />
         </label>
         <label>
           Description:
-          <input type="text" name="description" value={inputValues.description} onChange={handleChange} />
+          <input type="text" name="description" value={inputValues.description} onChange={handleChange} required />
         </label>
         <label>
           Place:
-          <input type="text" name="place" value={inputValues.place} onChange={handleChange} />
+          <input type="text" name="place" value={inputValues.place} onChange={handleChange} required />
         </label>
         <label>
           Salary:
-          <input type="number" name="salary" value={inputValues.salary} onChange={handleChange} />
+          <input type="number" name="salary" value={inputValues.salary} onChange={handleChange} required />
         </label>
         <label>
           End Date:
-          <input type="date" name="endDate" value={inputValues.endDate} onChange={handleChange} />
+          <input type="date" name="endDate" value={inputValues.endDate} onChange={handleChange} required />
         </label>
         <label>
           Vacancy:
-          <input type="number" name="vacancy" value={inputValues.vacancy} onChange={handleChange} />
+          <input type="number" name="vacancy" value={inputValues.vacancy} onChange={handleChange} required />
+        </label>
+        <label>
+          Industry:
+          <select name="industry" value={inputValues.industry} onChange={handleChange} required>
+            <option value="" disabled>Select Industry</option>
+            <option value="coffee shop">Coffee Shop</option>
+            <option value="restaurant">Restaurant</option>
+            <option value="mobile stores">Mobile Stores</option>
+            <option value="dmart">Dmart</option>
+            <option value="malls">Malls</option>
+            <option value="medical stores">Medical Stores</option>
+            <option value="electronics">Electronics</option>
+            <option value="library">Library</option>
+            <option value="universities">Universities</option>
+            <option value="zomato">Zomato</option>
+          </select>
         </label>
         <button type="submit">Submit</button>
       </form>

@@ -13,7 +13,7 @@ const uri = 'mongodb+srv://21pa1a1238:21pa1a1238@cluster0.osadpdz.mongodb.net/te
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  dbName: 'apply', // Replace 'your_database_name' with your actual database name
+  dbName: 'apply',
 });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -25,9 +25,11 @@ db.once('open', () => {
 const applicationSchema = new mongoose.Schema({
   name: String,
   email: String,
-  message: String,
+  phone: String,
+  experience: String,
   age: Number,
   degree: String,
+  industry: String,
 });
 
 // Create model from schema
@@ -35,9 +37,9 @@ const Application = mongoose.model('Application', applicationSchema);
 
 // Route to handle POST requests to store application form data
 app.post('/applications', async (req, res) => {
-  const { name, email, message, age, degree } = req.body;
+  const { name, email, phone, experience, age, degree, industry } = req.body;
   try {
-    const newApplication = new Application({ name, email, message, age, degree });
+    const newApplication = new Application({ name, email, phone, experience, age, degree, industry });
     await newApplication.save();
     res.status(201).json(newApplication);
   } catch (err) {

@@ -20,9 +20,6 @@ db.once('open', () => {
   console.log('Connected to MongoDB Atlas');
 });
 
-
-
-
 // Define schema for job items
 const itemSchema = new mongoose.Schema({
   name: String,
@@ -31,24 +28,37 @@ const itemSchema = new mongoose.Schema({
   salary: Number,
   endDate: Date,
   vacancy: Number,
+  industry: String,
 });
 
 // Create model from job item schema
 const Item = mongoose.model('Item', itemSchema);
 
-// Route to handle POST requests to store application form data
-
 // Route to handle POST requests to store job items
 app.post('/items', async (req, res) => {
-  const { name, description, place, salary, endDate, vacancy } = req.body;
+  const { name, description, place, salary, endDate, vacancy, industry } = req.body;
   try {
-    const newItem = new Item({ name, description, place, salary, endDate, vacancy });
+    const newItem = new Item({ name, description, place, salary, endDate, vacancy, industry });
     await newItem.save();
     res.status(201).json(newItem);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
+
+// Route to get all job items with optional filtering by industry
+app.get('/items', async (req, res) => {
+  const { industry } = req.query;
+  const filter = industry ? { industry } : {};
+  try {
+    const items = await Item.find(filter);
+    res.status(200).json(items);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Function to delete expired jobs
 const deleteExpiredJobs = async () => {
   try {
     const currentDate = new Date();
@@ -58,16 +68,9 @@ const deleteExpiredJobs = async () => {
     console.error('Error deleting expired jobs:', err);
   }
 };
+
+// Schedule job to delete expired jobs daily
 setInterval(deleteExpiredJobs, 24 * 60 * 60 * 1000);
-// Route to get all job items
-app.get('/items', async (req, res) => {
-  try {
-    const items = await Item.find();
-    res.status(200).json(items);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
 
 // Start server
 app.listen(PORT, () => {
